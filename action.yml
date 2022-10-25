@@ -1,0 +1,26 @@
+name: Ansible Publish
+description: Publish Ansible Collection to galaxy.ansible.com
+author: Ansible by Red Hat <info@ansible.com>
+branding:
+  icon: upload
+  color: red
+inputs:
+  api_key:
+    description: Galaxy API key to use
+    required: true
+  api_server:
+    description: Galaxy API server to use, default being `https://galaxy.ansible.com`
+    required: false
+    default: https://galaxy.ansible.com/
+  src_path:
+    description: Specific path to collection, default being `.`
+    required: false
+    default: .
+runs:
+  using: docker
+  image: docker://ghcr.io/ansible/creator-ee:latest
+  entrypoint: /usr/local/bin/devtools-publish
+  env:
+    API_SERVER: ${{ inputs.api_server }}
+    API_KEY: ${{ inputs.api_key }}
+    SRC_PATH: ${{ inputs.src_path }}
