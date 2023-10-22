@@ -1,3 +1,4 @@
+---
 name: Ansible Publish
 description: Publish Ansible Collection to galaxy.ansible.com
 author: Ansible by Red Hat <info@ansible.com>
